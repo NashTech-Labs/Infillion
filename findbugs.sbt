@@ -7,3 +7,7 @@ import de.johoop.findbugs4sbt.FindBugs._
 //-----------------------------------------
 
 findbugsSettings
+
+findbugsReportType := Some(de.johoop.findbugs4sbt.ReportType.Html)
+
+findbugsReportPath := Some(target.value / "findbugs" / "findbugs.html")
