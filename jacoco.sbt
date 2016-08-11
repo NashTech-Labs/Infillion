@@ -1,3 +1,5 @@
+import de.johoop.jacoco4sbt.HTMLReport
+
 //----------------------------------------
 // Setup Jacoco test coverage.
 // Invocation: sbt jacoco:cover
@@ -5,3 +7,9 @@
 //----------------------------------------
 
 jacoco.settings
+
+jacoco.outputDirectory in jacoco.Config := file("target/jacoco")
+
+jacoco.reportFormats   in jacoco.Config := Seq(HTMLReport("utf-8"))
+
+jacoco.excludes        in jacoco.Config := Seq("com.knoldus.main.*")

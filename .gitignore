@@ -1,10 +1,9 @@
-<<<<<<< HEAD
+#ignore file and folders
+*.class
 target
 .git
 .idea
 project/target
-=======
-*.class
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
@@ -16,4 +15,3 @@ project/target
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
->>>>>>> 93db8985a79e7131f36d0fffb1ace31e8c14bc85
