@@ -1,4 +1,9 @@
+#ignore file and folders
 *.class
+target
+.git
+.idea
+project/target
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
