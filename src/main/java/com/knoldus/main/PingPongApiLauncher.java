@@ -10,7 +10,8 @@ import akka.http.javadsl.model.HttpResponse;
 import akka.http.javadsl.server.Route;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
-import com.knoldus.controllers.PingPongApi;
+import com.knoldus.routes.InfillionRoutes;
+
 
 import java.io.IOException;
 import java.util.concurrent.CompletionStage;
@@ -20,15 +21,13 @@ import java.util.concurrent.CompletionStage;
  */
 public class PingPongApiLauncher {
     public static void main(String[] args) throws IOException {
-        ActorSystem system = ActorSystem.create();
-
-        final PingPongApi launcher = new PingPongApi();
-        final Route route = launcher.handleGetPingRequest();
-
-        final Http http = Http.get(system);
+        final ActorSystem system = ActorSystem.create();
         final ActorMaterializer materializer = ActorMaterializer.create(system);
 
+        final Route route = InfillionRoutes.routes();
         final Flow<HttpRequest, HttpResponse, NotUsed> flow = route.flow(system, materializer);
+
+        final Http http = Http.get(system);
         final CompletionStage<ServerBinding> bindings = http.bindAndHandle(flow, ConnectHttp.toHost("127.0.0.1", 8080), materializer);
 
         System.out.println("Type RETURN to exit");
